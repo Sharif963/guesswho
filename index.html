@@ -1,11 +1,136 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Guess Who</title>
+
+<style>
+
+body{
+margin:0;
+background:#e8ecf4;
+font-family:Arial;
+}
+
+header{
+background:#1565c0;
+color:white;
+padding:15px;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+}
+
+#board{
+
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:12px;
+
+padding:15px;
+max-width:900px;
+margin:auto;
+
+}
+
+.card{
+
+background:white;
+
+border-radius:14px;
+
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+
+cursor:pointer;
+
+transition:.25s;
+
+overflow:hidden;
+
+}
+
+.card img{
+
+width:100%;
+
+display:block;
+
+}
+
+.card p{
+
+margin:10px;
+
+font-weight:bold;
+
+text-align:center;
+
+}
+
+.card.off{
+
+opacity:.15;
+
+transform:rotateY(180deg);
+
+}
+
+</style>
+
 </head>
-<body style="font-family:Arial;text-align:center;margin-top:100px;">
-<h1>🎭 Guess Who</h1>
-<p>إذا ظهرت لك هذه الصفحة، فكل شيء يعمل بنجاح.</p>
+
+<body>
+
+<header>
+
+🎭 Guess Who
+
+</header>
+
+<div id="board">
+
+</div>
+
+<script>
+
+const names=[
+
+"Ahmed","Omar","Ali","Sara","Lina","Noor",
+
+"Adam","Maya","Yousef","Rami","Hala","Jad",
+
+"Tala","Zaid","Reem","Nour","Kareem","Layan",
+
+"Sam","Dana","Taim","Farah","Hadi","Leen"
+
+];
+
+const board=document.getElementById("board");
+
+for(let i=0;i<24;i++){
+
+board.innerHTML+=`
+<div class="card">
+<img src="https://picsum.photos/200?random=${i}">
+<p>${names[i]}</p>
+</div>
+`;
+
+}
+
+document.querySelectorAll(".card").forEach(c=>{
+
+c.onclick=()=>{
+
+c.classList.toggle("off");
+
+}
+
+})
+
+</script>
+
 </body>
+
 </html>
