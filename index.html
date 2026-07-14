@@ -106,8 +106,7 @@ for(let i=0;i<24;i++){
 
 board.innerHTML+=`
 <div class="card">
-<img src="https://picsum.photos/200?random=${i}">
-<p>${names[i]}</p>
+<img src="https://randomuser.me/api/portraits/${i<12?'men':'women'}/${i<12?i:i-12}.jpg">
 </div>
 `;
 
